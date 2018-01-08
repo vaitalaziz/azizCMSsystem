@@ -8,6 +8,9 @@ var expressValidator = require('express-validator');
 var fileUpload = require('express-fileUpload');
 var passport = require('passport');
 
+const port = process.env.PORT || 3000;
+
+
 // DB connection
 mongoose.connect(config.database);
 var db = mongoose.connection;
@@ -159,7 +162,7 @@ app.use('/', pages);
 
 
 // Server startup
-var port = 3000;
+// var port = 3000;
 app.listen(port, function(){
-    console.log('Server listening on port: '+ port)
+    console.log(`Server listening on port: ${port}`)
 });
