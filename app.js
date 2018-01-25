@@ -7,8 +7,10 @@ var session = require('express-session');
 var expressValidator = require('express-validator');
 var fileUpload = require('express-fileUpload');
 var passport = require('passport');
+const http = require('http');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
+
 
 
 // DB connection
@@ -22,6 +24,7 @@ db.once('open', function() {
 
 // Initialize ap
 var app = express();
+var server = http.createServer(app);
 
 //view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -163,6 +166,6 @@ app.use('/', pages);
 
 // Server startup
 // var port = 3000;
-app.listen(port, function(){
+server.listen(port, function(){
     console.log(`Server listening on port: ${port}`)
 });
